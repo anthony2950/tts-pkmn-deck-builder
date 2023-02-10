@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <title>TTS Pokemon TCG Deck Builder</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="" />
+
+  <script type="text/javascript" src="assets/card-back-image.js"></script>
+  <script type="text/javascript" src="assets/deck-assembly.js"></script>
+  <script type="text/javascript" src="assets/set-mapping.js"></script>
+  <script type="text/javascript" src="assets/tts-set-metadata.js"></script>
+  <script type="text/javascript" src="pkmn-tcg-deck-builder.js"></script>
+
+  <style type="text/css">
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    body > * {
+      margin-bottom: 16px;
+    }
+
+    ul {
+      margin: 0;
+    }
+
+    .flex-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #parseDecklistWarningMessage {
+      color: dodgerblue;
+    }
+
+    #parseDecklistErrorMessage {
+      color: red;
+    }
+
+    #parseDecklistWarningMessage ul #parseDecklistErrorMessage ul {
+      padding-left: 1.5rem;
+    }
+  </style>
+
+  <body>
+    <h3>TTS Pokemon TCG Deck Builder</h3>
+
+    <div class="flex-column">
+      <label for="deckName">Deck Name</label>
+      <input id="deckName" type="text" oninput="deckNameChanged(event)" />
+    </div>
+
+    <div class="flex-column">
+      <span id="parseDecklistErrorMessage"></span>
+
+      <span id="parseDecklistWarningMessage"></span>
+    </div>
+
+    <textarea
+      id="decklistArea"
+      rows="35"
+      cols="100"
+      placeholder="Paste your decklist here in PTCGO format."
+      oninput="textareaChanged(event)"
+    ></textarea>
+
+    <button onclick="generateDeck()">Generate</button>
+  </body>
+</html>
